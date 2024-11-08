@@ -31,29 +31,48 @@ use Illuminate\Support\Facades\File;
 class HomeController extends Controller
 {
     public function index(Request $request)
-    {
-        $categoryId = $request->categoryId;
-        $pageId = $request->pageId;
+{
+    $categoryId = $request->categoryId;
+    $pageId = $request->pageId;
+    $searchQuery = $request->input('search'); // Retrieve the search query from the request
 
-        $categories = Category::all();
-        $pages = Page::where('parent_id',null)->where('category_id',$categoryId)->with('pages')->get();
+    $categories = Category::all();
+    $categorySelected = $categoryId ? Category::find($categoryId) : Category::first();
 
-        $categorySelected = $categoryId ? Category::findOrFail($categoryId) : Category::first();
-
-        if($pageId){
-            $page = Page::findOrFail($pageId);
-        }else {
-            $page = Page::where('category_id', $categoryId)->first();
-        }
-
-        return view('client.index', [
-
-            'categories'=>$categories,
-            'pages'=>$pages,
-            'page' => $page,
-            'categorySelected' => $categorySelected,
-        ]);
+    if (!$categorySelected) {
+        return abort(404, 'Category not found');
     }
+
+    $pagesQuery = Page::where('parent_id', null)
+                      ->where('category_id', $categorySelected->id)
+                      ->with('pages');
+
+    // Apply search filter if search query exists
+    if ($searchQuery) {
+        $pagesQuery->where('name', 'LIKE', '%' . $searchQuery . '%');
+    }
+
+    $pages = $pagesQuery->get();
+
+    $page = $pageId ? Page::find($pageId) : $pages->first();
+    if ($pageId && !$page) {
+        return abort(404, 'Page not found');
+    }
+    // return($page);
+
+    return view('client.index', [
+        'categories' => $categories,
+        'pages' => $pages,
+        'page' => $page,
+        'categorySelected' => $categorySelected,
+        'searchQuery' => $searchQuery,
+    ]);
+}
+
+
+
+
+
 
 
 

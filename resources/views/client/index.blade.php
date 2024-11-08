@@ -174,19 +174,17 @@
                 </div>
             </div>
         </nav>
-
-
         <!-- Sidebar -->
 
         <aside
             class="fixed md:top-0 top-16 left-0 z-40 w-72 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 "
             aria-label="Sidenav" id="drawer-navigation">
-            <form action="#" method="GET"
+            <form action="{{ url('/') }}" method="GET"
                 class=" primary2 p-4 text-center text-2xl font-semibold text-white  hidden md:grid">
 
                 <button id="dropdownBottomButton" data-dropdown-toggle="dropdownBottom"
                     data-dropdown-placement="bottom"
-                    class="mb-3 text-center text-2xl md:mb-0 text-white font-medium rounded-lg px-5 py-2.5 inline-flex items-center justify-between"
+                    class=" text-center text-2xl md:mb-0 text-white font-medium rounded-lg  py-2.5 inline-flex items-center justify-between"
                     type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
@@ -235,44 +233,62 @@
                             </path>
                         </svg>
                     </div>
+                    <input type="hidden" name="categoryId" value="{{ $categorySelected->id }}">
+                    <input type="hidden" name="pageId" value="{{ $page->id }}">
                     <input type="text" name="search" id="sidebar-search"
-                        class="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search" />
+                        class="bg-gray-50  text-black text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                        placeholder="Search" value="{{ request('search') }}" />
                 </div>
             </form>
-            <div class="overflow-y-auto py-5 px-2 h-full primary1 dark:bg-gray-800">
+            <div class="overflow-y-auto py-5  h-full primary1 dark:bg-gray-800">
 
                 <ul class="">
                     @forelse ($pages as $item)
-                        <li class="">
+                        <li
+                            class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) ? 'bg-white text-black text-[17px] py-2' : 'text-white text-[17px]' }} ">
                             @if (count($item->pages) > 0)
-                                <button type="button"
-                                    class="flex items-center py-2 w-full text-base text-white group-hover:text-black rounded-lg transition duration-75 group "
-                                    aria-controls="dropdown-pages{{ $item->id }}"
-                                    data-collapse-toggle="dropdown-pages{{ $item->id }}">
+                                <div class="  w-full grid grid-cols-4 items-center space-x-8 ">
+                                    <div class="col-span-3 mx-4">
+                                        <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $item->id) }}"
+                                            class="{{ $categorySelected->id . '&pageId=' . $item->id == request('categoryId') . '&pageId=' . request('pageId') ? '  underline underline-offset-4 ' : '' }}">
+                                            {{ $item->name }}
+                                        </a>
+                                    </div>
 
-                                    <span class="flex-1 ml-3 text-left w-40">{{ $item->name }}</span>
-                                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <ul id="dropdown-pages{{ $item->id }}" class="hidden">
+                                    <button type="button"
+                                        class="{{ $categorySelected->id . '&pageId=' . $item->id == request('categoryId') . '&pageId=' . request('pageId') ? ' ' : '' }} col-span-1 py-2 justify-end w-full text-base transition duration-75 group "
+                                        aria-controls="dropdown-pages{{ $item->id }}"
+                                        data-collapse-toggle="dropdown-pages{{ $item->id }}">
+
+
+                                        <svg aria-hidden="true" class="w-6 h-6" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    </button>
+                                </div>
+
+                                <ul id="dropdown-pages{{ $item->id }}"
+                                    class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) ? '' : 'hidden' }}">
                                     @forelse ($item->pages as $subPage)
                                         <li>
                                             <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $subPage->id) }}"
-                                                class="flex items-center py-1 pl-7 w-full text-base hover:bg-[#473d3d] group text-white rounded-lg transition duration-75 group hover:primary3  dark:hover:bg-gray-700">
+                                                class="{{ $categorySelected->id == request('categoryId') && $subPage->id == request('pageId') ? 'underline  underline-offset-4 ' : '' }}  items-center py-1 pl-7 w-full text-base group rounded-lg transition duration-75 group hover:primary3 dark:hover:bg-gray-700">
                                                 {{ $subPage->name }}
                                             </a>
                                         </li>
                                     @empty
+                                        <li class="text-gray-500 py-1 pl-7">No pages available</li>
                                     @endforelse
                                 </ul>
                             @else
                                 <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $item->id) }}"
-                                    class="flex items-center py-2 w-full text-base text-white group-hover:text-black rounded-lg transition duration-75 group ">
+                                    class=" {{ $item->id == request('pageId') ? 'bg-white text-black text-[17px] underline ' : 'text-white text-[17px]' }}
+                                    flex items-center py-2 mx-1 w-full
+                                    transition duration-75 group ">
 
                                     <span class="flex-1 ml-3 text-left w-40">{{ $item->name }}</span>
 
@@ -365,7 +381,7 @@
 
         </aside>
 
-        <main class="p-4 md:ml-72 h-auto pt-20 mt-5 no-tailwind min-h-[83vh]">
+        <main class="p-4 md:ml-72 h-auto no-tailwind min-h-[80vh]">
             @if ($page)
                 {!! $page->description !!}
             @else
@@ -376,11 +392,50 @@
 
     <footer class="sm:text-center md:ml-72 ">
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© Copyright 2022-23, Koha
+        <span class="block text-sm mb-5 text-gray-500 sm:text-center dark:text-gray-400">© Copyright 2022-23, Koha
             Community. Last updated on 2024-11-03 01:02:36. <a href="https://flowbite.com/"
                 class="hover:underline"></a></span>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the categoryId and pageId from the URL
+            const categoryId = new URLSearchParams(window.location.search).get('categoryId');
+            const pageId = new URLSearchParams(window.location.search).get('pageId');
+
+            // Show the dropdown that corresponds to the categoryId in the URL
+            const dropdowns = document.querySelectorAll('[id^="dropdown-pages"]');
+            dropdowns.forEach(dropdown => {
+                const dropdownCategoryId = dropdown.id.split('-')[
+                    1]; // Extract item ID from the dropdown ID
+
+                // If categoryId matches the dropdown's categoryId, show the dropdown
+                if (categoryId && categoryId === dropdownCategoryId) {
+                    dropdown.classList.remove('hidden'); // Show dropdown
+                }
+            });
+
+            // Open the dropdown when clicking on a parent link
+            const toggleButtons = document.querySelectorAll('[data-collapse-toggle]');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetDropdown = document.getElementById(button.getAttribute(
+                        'aria-controls'));
+                    targetDropdown.classList.toggle('hidden'); // Toggle the dropdown visibility
+                });
+            });
+
+            // Keep the dropdown open when clicking a subPage
+            const links = document.querySelectorAll('a[href*="pageId"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    const parentDropdown = link.closest('ul'); // Find the parent dropdown
+                    parentDropdown.classList.remove('hidden'); // Keep the dropdown open
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

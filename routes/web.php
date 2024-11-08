@@ -205,6 +205,8 @@ Route::group([
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/index', [HomeController::class, 'index']);
+    Route::get('/search', [HomeController::class, 'search']);
+
 
 
 });

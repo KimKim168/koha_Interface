@@ -136,7 +136,8 @@
                         <th scope="row"
                             class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @if ($item->image)
-                                <img src="{{ asset('assets/images/users/thumb/' . $item->image) }}" alt="profile Image"
+                                <img src="{{ asset('assets/images/users/thumb/' . $item->image) }}"
+                                    alt="profile Image"
                                     class="object-cover w-auto h-10 mr-3 rounded-full aspect-square">
                             @else
                                 <img src="{{ asset('assets/icons/profile.png') }}" alt="profile icon"
@@ -361,7 +362,8 @@
 
                                 @can('update user')
                                     <x-edit-button identifier="{{ $item->id }}" {{-- editUrl="{{ route('admin.users.edit', $item->id) }}" --}}
-                                        editUrl="{{ url('admin/users/' . $item->id . '/edit') }}" tooltipText="Edit User" />
+                                        editUrl="{{ url('admin/users/' . $item->id . '/edit') }}"
+                                        tooltipText="Edit User" />
                                 @endcan
 
                             </div>
