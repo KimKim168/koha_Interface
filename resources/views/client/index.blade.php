@@ -29,9 +29,9 @@
 </head>
 
 <body class="bg-gray-50 font-sans antialiased ">
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
-        <nav class="primary2 border-b border-gray-200 px-4 py-2.5  fixed left-0 right-0 top-0 z-50 md:hidden">
-            <div class="flex flex-wrap justify-between items-center">
+    <div class="antialiased bg-gray-50 overflow-hidden">
+        <nav class="primary2 border-b border-gray-200 px-4 py-2.5 sticky top-0 z-50 md:hidden">
+            <div class="flex flex-nowrap justify-between items-center">
                 <div class="flex items-center justify-between">
                     <button data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation"
                         aria-controls="drawer-navigation"
@@ -51,11 +51,10 @@
                         <span class="sr-only">Toggle sidebar</span>
                     </button>
                     <form action="#" method="GET"
-                        class=" primary2  text-center text-2xl font-semibold text-white  md:hidden">
-
+                        class="primary2 text-center text-2xl font-semibold text-white md:hidden">
                         <button id="dropdownBottomButton" data-dropdown-toggle="dropdownBottom1"
                             data-dropdown-placement="bottom"
-                            class="space-x-4 text-center text-2xl md:mb-0 text-white font-medium rounded-lg  py-2.5 inline-flex items-center justify-between"
+                            class="space-x-4 text-center text-2xl md:mb-0 text-white font-medium rounded-lg py-2.5 inline-flex items-center justify-between"
                             type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
@@ -64,22 +63,17 @@
                                 <path
                                     d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                             </svg>
-
                             @if ($categorySelected)
                                 <p>{{ $categorySelected->name }}</p>
                             @else
                                 <p>No category</p>
                             @endif
-                            <!-- Show the first category or 'No category' -->
-
                             <svg class="w-3 h-3 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-
-                        <!-- Dropdown menu -->
                         <div id="dropdownBottom1"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -127,9 +121,9 @@
                         </g>
                     </svg>
                 </button>
-                <div class="hidden my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 "
+                <div class="hidden my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
                     id="language-dropdown">
-                    <ul class="py-1 " role="none">
+                    <ul class="py-1" role="none">
                         <li>
                             <a href="#"
                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600"
@@ -144,36 +138,24 @@
                                                     d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
                                                     transform="scale(3.9385)" />
                                                 <path fill="#fff"
-                                                    d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
+                                                    d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
                                                     transform="scale(3.9385)" />
+                                                <path fill="#002868" d="M0 0h98.8v70H0z" transform="scale(3.9385)" />
                                             </g>
-                                            <path fill="#192f5d" d="M0 0h98.8v70H0z" transform="scale(3.9385)" />
                                             <path fill="#fff"
-                                                d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z"
-                                                transform="scale(3.9385)" />
+                                                d="M3.5 2.5h7l-6 4.2 2.3 7-6-4.2-6 4.2 2.2-7-6-4.2h7L-8.5-4z"
+                                                transform="translate(1 1) scale(.24598)" />
                                         </g>
                                     </svg>
                                     English (US)
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600"
-                                role="menuitem">
-                                <div class="inline-flex items-center ">
-
-                                    <img src="{{ asset('assets/icons/cambodiaFlag.png') }}" alt=""
-                                        class="w-3.5 mr-2">
-                                    Cambodia
-                                </div>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- Sidebar -->
 
         <aside
@@ -381,7 +363,7 @@
 
         </aside>
 
-        <main class="p-4 mt-10 md:mt-0 md:ml-72 h-auto no-tailwind min-h-[80vh]">
+        <main class="p-4 mt-5 md:mt-0 md:ml-72 h-auto no-tailwind min-h-[80vh]">
             @if ($page)
                 {!! $page->description !!}
             @else
@@ -392,7 +374,7 @@
 
     <footer class="sm:text-center md:ml-72 ">
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm mb-5 text-gray-500 sm:text-center dark:text-gray-400">© Copyright 2022-23, Koha
+        <span class="block text-sm mb-5 text-gray-500 text-center dark:text-gray-400">© Copyright 2022-23, Koha
             Community. Last updated on 2024-11-03 01:02:36. <a href="https://flowbite.com/"
                 class="hover:underline"></a></span>
         </div>
