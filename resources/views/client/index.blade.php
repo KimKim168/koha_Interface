@@ -163,7 +163,7 @@
                                 role="menuitem">
                                 <div class="inline-flex items-center ">
 
-                                    <img src="{{ asset('assets/images/icon/world.png') }}" alt=""
+                                    <img src="{{ asset('assets/icons/cambodiaFlag.png') }}" alt=""
                                         class="w-3.5 mr-2">
                                     Cambodia
                                 </div>
@@ -368,7 +368,7 @@
                                 role="menuitem">
                                 <div class="inline-flex items-center ">
 
-                                    <img src="{{ asset('assets/images/icon/world.png') }}" alt=""
+                                    <img src="{{ asset('assets/icons/cambodiaFlag.png') }}" alt=""
                                         class="w-3.5 mr-2">
                                     Cambodia
                                 </div>
@@ -381,7 +381,7 @@
 
         </aside>
 
-        <main class="p-4 md:ml-72 h-auto no-tailwind min-h-[80vh]">
+        <main class="p-4 mt-10 md:mt-0 md:ml-72 h-auto no-tailwind min-h-[80vh]">
             @if ($page)
                 {!! $page->description !!}
             @else
