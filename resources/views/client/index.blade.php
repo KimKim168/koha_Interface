@@ -13,7 +13,8 @@
         rel="stylesheet" />
     <title>Koha Wiki</title>
     {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/koha.png') }}"> --}}
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/koha.png') }}">
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/koha.png') }}"> --}}
+    <link rel="icon" type="image/png" href="{{ asset('assets/icons/koha.png') }}">
 
     <style>
         .primary1 {
