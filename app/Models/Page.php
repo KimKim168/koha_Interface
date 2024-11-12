@@ -14,4 +14,8 @@ class Page extends Model
     public function pages() {
         return $this->hasMany(Page::class, 'parent_id', 'id');
     }
+
+    public function parent() {
+        return $this->belongsTo(Page::class, 'parent_id', 'id');
+    }
 }

@@ -35,7 +35,7 @@
                 <div class="flex items-center justify-between">
                     <button data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation"
                         aria-controls="drawer-navigation"
-                        class="p-1 mr-4 text-white rounded-lg cursor-pointer md:hidden hover:text-white hover:primary3 focus:bg-gray-900 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="p-1 mr-4 text-white rounded-lg cursor-pointer md:hidden hover:text-white hover:primary3 focus:bg-gray-900 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400  dark:hover:text-white">
                         <span class="sr-only">Open sidebar</span>
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +239,7 @@
                 <ul class="">
                     @forelse ($pages as $item)
                         <li
-                            class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) ? 'bg-white text-black text-[17px] py-2' : 'text-white text-[17px]' }} ">
+                            class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) || collect($item->pages)->contains('id', $page->parent?->id) ? 'bg-white text-black text-[17px] py-2' : 'text-white text-[17px]' }} ">
                             @if (count($item->pages) > 0)
                                 <div class="  w-full grid grid-cols-4 items-center space-x-8 ">
                                     <div class="col-span-3 mx-4">
@@ -266,13 +266,48 @@
                                 </div>
 
                                 <ul id="dropdown-pages{{ $item->id }}"
-                                    class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) ? '' : 'hidden' }}">
+                                    class="{{ $item->id == request('pageId') || collect($item->pages)->contains('id', request('pageId')) || collect($item->pages)->contains('id', $page->parent?->id) ? '' : 'hidden' }}">
+
                                     @forelse ($item->pages as $subPage)
                                         <li>
-                                            <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $subPage->id) }}"
-                                                class="{{ $categorySelected->id == request('categoryId') && $subPage->id == request('pageId') ? 'underline  underline-offset-4 ' : '' }}  items-center py-1 pl-7 w-full text-base group rounded-lg transition duration-75 group hover:primary3 dark:hover:bg-gray-700">
-                                                {{ $subPage->name }}
-                                            </a>
+                                            <div class="flex justify-center items-center pl-7">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#0033ff"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-corner-down-right">
+                                                    <polyline points="15 10 20 15 15 20" />
+                                                    <path d="M4 4v7a4 4 0 0 0 4 4h12" />
+                                                </svg>
+                                                <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $subPage->id) }}"
+                                                    class="{{ $categorySelected->id == request('categoryId') && $subPage->id == request('pageId') ? 'underline underline-offset-4' : '' }} items-center py-1  w-full text-base group rounded-lg transition duration-75 group hover:primary3 ">
+                                                    {{ $subPage->name }}
+                                                </a>
+                                            </div>
+
+                                            {{-- SubSubPages --}}
+                                            @if (count($subPage->pages))
+                                                <ul id="dropdown-subpages{{ $subPage->id }}"
+                                                    class="{{ $subPage->id == request('pageId') || collect($subPage->pages)->contains('id', request('pageId')) ? '' : 'hidden' }}">
+                                                    @foreach ($subPage->pages as $subSubPage)
+                                                        <li class="flex justify-center items-center pl-10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="#EF0107" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="lucide lucide-corner-down-right">
+                                                                <polyline points="15 10 20 15 15 20" />
+                                                                <path d="M4 4v7a4 4 0 0 0 4 4h12" />
+                                                            </svg>
+                                                            <a href="{{ url('?categoryId=' . $categorySelected->id . '&pageId=' . $subSubPage->id) }}"
+                                                                class="{{ $categorySelected->id == request('categoryId') && $subSubPage->id == request('pageId') ? 'underline underline-offset-4' : '' }} items-center py-1  w-full text-sm group rounded-lg transition duration-75 hover:primary3 ">
+                                                                {{ $subSubPage->name }}
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                            {{-- End SubSubPages --}}
+
                                         </li>
                                     @empty
                                         <li class="text-gray-500 py-1 pl-7">No pages available</li>
