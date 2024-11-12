@@ -11,7 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Moul&family=Poppins:ital&family=Rubik+Doodle+Shadow&display=swap,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Siemreap&display=swap"
         rel="stylesheet" />
-    <title>Document</title>
+    <title>Koha Wiki</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/koha.png') }}">
 
     <style>
         .primary1 {
@@ -131,7 +132,8 @@
                                 role="menuitem">
                                 <div class="inline-flex items-center">
                                     <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full mr-2"
-                                        xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512">
+                                        xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us"
+                                        viewBox="0 0 512 512">
                                         <g fill-rule="evenodd">
                                             <g stroke-width="1pt">
                                                 <path fill="#bd3d44"

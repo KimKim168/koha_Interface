@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>REPEAT GYM</title>
+    <title>Koha Wiki</title>
 
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
@@ -31,10 +31,10 @@
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="REPEAT GYM">
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/bg/logo.png') }}">
-    <link rel="apple-touch-startup-image" href="{{ asset('assets/images/bg/logo.png') }}">
-    <link rel="icon" href="{{ asset('assets/images/bg/logo.png') }}">
+    <meta name="apple-mobile-web-app-title" content="Koha Wiki">
+    <link rel="apple-touch-icon" href="{{ asset('assets/icons/koha.png') }}">
+    <link rel="apple-touch-startup-image" href="{{ asset('assets/icons/koha.png') }}">
+    <link rel="icon" href="{{ asset('assets/icons/koha.png') }}">
 
     <style>
         .select2-selection {
@@ -211,9 +211,9 @@
                         <span class="sr-only">Toggle sidebar</span>
                     </button>
                     <a href="/" class="flex items-center justify-center mr-4">
-                        <img src="{{ asset('assets/images/bg/logo.png') }}" class="h-8 mr-3" alt="Flowbite Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Repeat
-                            Gym</span>
+                        <img src="{{ asset('assets/icons/koha.png') }}" class="h-8 mr-3" alt="Flowbite Logo" />
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Koha
+                            Wiki</span>
                     </a>
 
                 </div>
@@ -419,11 +419,11 @@
             aria-label="Sidenav" id="drawer-navigation">
             <a href="/" class="flex items-center justify-center p-3.5 border-b dark:border-b-slate-600">
 
-                <img src="{{ asset('assets/images/bg/logo.png') }}"
+                <img src="{{ asset('assets/icons/koha.png') }}"
                     class="object-cover h-8 mr-3 rounded-full aspect-square" alt="Flowbite Logo" />
 
                 <span class="self-center text-2xl font-semibold line-clamp-1 dark:text-white">
-                    Repeat Gym
+                    Koha Wiki
                 </span>
             </a>
             <div class="h-full px-3 py-5 overflow-y-auto bg-white dark:bg-gray-800 pb-[8rem]">
@@ -751,7 +751,7 @@
                         }" x-ref="categories">
                             <x-sidebar-item href="{{ route('admin.categories.index') }}"
                                 class="{{ request()->is('admin/categories*') ? 'bg-slate-200 dark:bg-slate-500' : '' }}">
-                                <img src="{{ asset('assets/icons/page.png') }}" alt="icon"
+                                <img src="{{ asset('assets/icons/category.png') }}" alt="icon"
                                     class="object-contain w-8 h-8 p-0.5 bg-white dark:bg-gray-200 rounded">
                                 <span class="ml-3">
                                     {{ __('messages.category') }}

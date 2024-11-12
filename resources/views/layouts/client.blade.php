@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REPEAT GYM</title>
+    <title>Koha Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -243,7 +243,7 @@
                 </button>
             </div>
             {{-- mobile menu --}}
-            <div id="mobile-menu"
+            {{-- <div id="mobile-menu"
                 class="border fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white  w-64 dark:bg-gray-800"
                 tabindex="-1" aria-labelledby="drawer-navigation-label">
                 <a id="drawer-navigation-label" href="{{ url('/') }}"
@@ -310,10 +310,10 @@
 
                     </ul>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Left Side - Contact Info -->
-            <div class="hidden md:flex gap-5 items-center space-x-3 md:flex-row">
+            {{-- <div class="hidden md:flex gap-5 items-center space-x-3 md:flex-row">
                 <div class="flex gap-8">
                     <div class="flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
@@ -335,10 +335,10 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
 
             <!-- Right Side - Social Media and Menu Button -->
-            <div class="flex items-center lg:order-2 gap-2">
+            {{-- <div class="flex items-center lg:order-2 gap-2">
                 <!-- Social Media - Mobile -->
                 <div class=" flex space-x-2 justify-center items-center">
                     @forelse ($links as $item)
@@ -350,7 +350,7 @@
                     @endforelse
 
                 </div>
-            </div>
+            </div> --}}
         </div>
         <script>
             const menuButton = document.getElementById('mobile-menu-button');
@@ -370,12 +370,12 @@
     <!-- Strat hero -->
     <div class="hidden mt-28 lg:flex flex-col justify-center items-center">
         <!-- Logo Section -->
-        <div>
+        {{-- <div>
             <img src="{{ asset('assets/images/bg/LOGO For Facebook Profile 02.png') }}" class="w-28" />
-        </div>
+        </div> --}}
 
         <!-- Navigation Menu -->
-        <div class="mt-4 md:mt-0 ">
+        {{-- <div class="mt-4 md:mt-0 ">
             <ul class="flex flex-wrap justify-center space-x-4 gap-y-3 text-sm font-costum3">
                 <li>
                     <a href="{{ url('/') }}"
@@ -405,7 +405,7 @@
                         CONTACT US</a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
 
     </div>
 
@@ -418,9 +418,9 @@
                     <div class="space-y-3">
                         <!-- Phone Number -->
                         <div class="flex items-center space-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="#11ace3" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="#11ace3" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-phone">
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
@@ -428,9 +428,9 @@
                         </div>
                         <!-- Email -->
                         <div class="flex items-center space-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="#11ace3" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#11ace3" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-mail">
                                 <rect width="20" height="16" x="2" y="4" rx="2" />
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                             </svg>
